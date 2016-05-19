@@ -1,0 +1,276 @@
+<!--<ng-include src="'partials/sidebar.html'" ng-controller="sidebarCtrl"></ng-include>-->
+
+<!-- sidebar -->
+<div class="backdrop" ng-show="sidebar">
+    <div class="col-xs-8">
+        <div class="sidebar">
+            <img class="backgroundSize" src="img/siderBar.png">
+            <div class="hover-siderbar">
+                <div class="T-center">
+    <!-- profolio -->
+                    <div id="main_image">
+                        <img class="profile_img" src="http://d1i6tehnj672py.cloudfront.net/fashion/wp-content/uploads/2013/01/KateUpton-ellefrance06-95x95.jpg"/>
+                    </div>
+                    <div class="T-center profileName">Kate Jones</div>
+                    
+                    <div class="liked">
+                        <a href="" ng-controller="loginCtrl" ng-click="auth.signin()" style="text-decoration:none">
+                        <div class="Half borderRight">
+                            <div class="T-center likedNum">19</div>
+                            <div class="T-center likedTitle">Liked Items</div>
+                        </div>
+                        <div class="Half">
+                            <div class="T-center likedNum">23</div>
+                            <div class="T-center likedTitle">Liked Outfits</div>
+                        </div>
+                        </a>
+                    </div>
+    <!-- Location -->
+
+                    <div class="location_edge">
+                        <div class="T-center optionHeading">Location</div>
+
+                        <div class="location"><div class="eighth"><img class="locationResize"src="img/location2.png"></div>
+
+                       <form ng-submit="setLocation(location)">
+                       <input type="text" class="location_btn" ng-model="location"/></form>
+                       </div>
+                         
+                    </div>
+                    
+    <!-- Gender -->
+
+                    <div>
+    	                <div class="T-center optionHeading">Gender</div>	
+    	                <div class="optionBody row">
+                            <div class="col-xs-6">
+                                <div align="center">
+                                    <a ng-click="gender_f=true; gender_m=false; setGender('female')" style="text-decoration:none">
+                                    <img ng-show="gender_f" class="gender_btn F-right" src="img/femaleAc.png"/>
+                                    <img ng-hide="gender_f" class="gender_btn F-right" src="img/femaleUn.png"/></a>
+                                </div>
+                            </div>  
+                            <div class="col-xs-6">
+                                <div align="center"><a ng-click="gender_m=true; gender_f=false; setGender('male')" style="text-decoration:none">
+                                    <img ng-show="gender_m" class="gender_btn F-left" src="img/maleAc.png"/>
+                                    <img ng-hide="gender_m" class="gender_btn F-left" src="img/maleUn.png"/>
+                                    </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+    <!-- Genre -->
+                    <div class="genre">
+    	                <div class="T-center optionHeading">Cloth Genre</div>
+    	                <div class="optionBody row">
+                            <div class="col-xs-6">
+        		                <div align="center">
+                                    <a ng-click="goto('genre1')" style="text-decoration:none">
+                                    <img ng-show="showCasual" class="genre_btn F-right" src="img/casualAc.png"/>
+                                    <img ng-hide="showCasual" class="genre_btn F-right" src="img/casualUn.png"/></a>
+                                </div>
+                        		<br/>
+                        		<div align="center">
+                                    <a ng-click="goto('genre3')" style="text-decoration:none">
+                                    <img ng-show="showOffice" class="genre_btn F-right" src="img/officeAc.png"/>
+                                    <img ng-hide="showOffice" class="genre_btn F-right" src="img/officeUn.png"/></a>
+                                </div>
+            	            </div>
+        	                <div class="col-xs-6">
+        		                <div align="center">
+                                    <a ng-click="goto('genre2');" style="text-decoration:none">
+                                    <img ng-show="showOutdoor" class="genre_btn F-left" src="img/outdoorAc.png"/>
+                                    <img ng-hide="showOutdoor" class="genre_btn F-left" src="img/outdoorUn.png"/></a>
+                                </div>
+                        		<br/>
+                        		<div align="center"><a ng-click="goto('genre4');" style="text-decoration:none"><img ng-show="showFashion" class="genre_btn F-left" src="img/fashionAc.png"/><img ng-hide="showFashion" class="genre_btn F-left" src="img/fashionUn.png"/></a></div>
+        	               </div>
+                        </div>
+                    </div>
+    
+                </div>
+                
+            </div>
+    <!-- Setting & logout -->
+	           <div class="set_bottom"> 
+                            <div class="set"><img class="Bottonsize"src="img/setting.png"></div>
+                            <div class="finder"><img class="Bottonsize"src="img/logout.png"></div>
+                </div>
+        </div>
+    </div>
+    <div class="col-xs-4 ">
+    	 <a ng-click="sidebar=false" style="text-decoration:none">
+    	 <div class="blank">
+    		
+    	 </div>
+    	 </a>
+    </div>
+     
+</div> 
+
+
+
+
+    <nav class="navbar-fixed-top">
+        
+        <div class="headingBar" >
+            <div id="headingTop">
+                <span class="F-left"><a ng-click="sidebar=true"><img class="icon-resize" src="img/list.png"></a></span>
+                <span class="F-center" >WearCast</span>
+                <span class="F-right"><a ng-href="#/search"><img class="icon-resize" src="img/search.png" ></a></span>
+            </div>
+             
+        </div>
+    </nav>
+
+    <nav class="navbar-fixed-bottom">
+        <div class="hover-div">
+            <div class="T-center brief"><img ng-src="{{iconToday}}">{{description}}</div>
+
+            <div class='subline'>
+
+                <div class="Sixth"></div><div class="Sixth"><img class="F-right" src="img/highTemp.png"></div><div class="Sixth">{{maxTempToday}}</div><div class="Sixth"><img class="F-right" src="img/lowTemp.png"></div><div class="Sixth">{{minTempToday}}</div><div class="Sixth"></div>
+            </div>
+
+            <div class="T-center big-temp" id="generW" ng-click="weatherDetail()">
+                {{temperature}}<span class="supDot">°</span>
+            </div>
+
+            <div class="T-center" id="detailW" ng-click="weatherGener()" style="display:none">
+                <div class="forcastBtn">
+                    <div class="Half T-left" >
+                        <div class="humPadding">
+                        <img src="img/humidity.png">{{humToday}}%
+                        </div>
+                        <div>
+                        <img class="precMargin" src="img/preProb.png">{{precToday}}%
+                        </div>
+                    </div>
+                    <div class="Half T-left" >
+                        <div class="humPadding">
+                        <img src="img/windSpeed.png"> {{windToday}}</div>
+                        <div>
+                        <img class="precMargin" src="img/visibility.png">{{visToday}}.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="T-center" id="toTmr" style="display:none">
+                <div class="forcastBtn">
+                    <div class="Half T-left" >
+                        <div class="humPadding">
+                        <img src="img/humidity.png">{{humTmr}}%
+                        </div>
+                        <div>
+                        <img class="precMargin" src="img/preProb.png">{{precTmr}}%
+                        </div>
+                    </div>
+                    <div class="Half T-left" >
+                        <div class="humPadding">
+                        <img src="img/windSpeed.png"> {{windTmr}}</div>
+                        <div>
+                        <img class="precMargin" src="img/visibility.png">{{visTmr}}.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="T-center" id="toAft" style="display:none">
+                <div class="forcastBtn">
+                    <div class="Half T-left" >
+                        <div class="humPadding">
+                        <img src="img/humidity.png">{{humAft}}%
+                        </div>
+                        <div>
+                        <img class="precMargin" src="img/preProb.png">{{precAft}}%
+                        </div>
+                    </div>
+                    <div class="Half T-left" >
+                        <div class="humPadding">
+                        <img src="img/windSpeed.png"> {{windAft}}</div>
+                        <div>
+                        <img class="precMargin" src="img/visibility.png">{{visAft}}.0</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="Location"><div class="T-center"><img src="img/location.png">{{location}}</div></div>
+
+            <div class="Forecast">
+                
+                <div class="Third dottedLine" ng-click="toToday()">
+                    <div>
+                        <div>{{dateToday}}</div>
+                        <div><img class="weatherIcon" ng-src="{{iconToday}}"></div>
+                        <div class="Half T-right"><p>{{maxTempToday}}°</p></div>
+                        <div class="Half T-left"><p>{{minTempToday}}°</p></div>
+
+                        
+
+
+                    </div>
+                </div>
+                <div class="Third dottedLine" ng-click="toTmr()">
+                    <div>
+                        <div>{{dateTmr}}</div>
+                        <div><img class="weatherIcon" ng-src="{{iconTmr}}"></div>
+                        <div class="Half T-right">{{maxTempTmr}}°</div>
+                        <div class="Half T-left">{{minTempTmr}}°</div>
+
+                        
+
+                    </div>
+
+                </div>
+                <div class="Third" ng-click="toAft()">
+                    <div>
+                        <div>{{dateAft}}</div>
+                        <div><img class="weatherIcon" ng-src="{{iconAft}}"></div>
+                        <div class="Half T-right">{{maxTempAft}}°</div>
+                        <div class="Half T-left">{{minTempAft}}°</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selectedDate">
+                <div class="Third2"><img id="todaySelected" src="img/bottomSelected.png"></div>
+                <div class="Third2"><img style="display: none"id="tmrSelected" src="img/bottomSelected.png"></div>
+                <div class="Third2"><img style="display: none"id="aftSelected" src="img/bottomSelected.png"></div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    
+    <nav class="navbar-fixed-bottom T-right">
+        <div class="hover-left">
+            <div ng-click="goto('genre1')">Casual<img ng-hide="showCasual" src="img/ring.png"><img ng-show="showCasual" src="img/selected.png"></div>
+            <div ><img class="T-right" src="img/line.png"></div>
+            <div ng-click="goto('genre2')" id="outdoor">Outdoor<img ng-hide="showOutdoor" src="img/ring.png"><img ng-show="showOutdoor" src="img/selected.png"></div>
+            <div ><img class="T-right" src="img/line.png"></div>
+            <div ng-click="goto('genre3')" id="office">Office<img ng-hide="showOffice" src="img/ring.png"><img ng-show="showOffice" src="img/selected.png"></div>
+            <div ><img class="T-right" src="img/line.png"></div>
+            <div ng-click="goto('genre4')" id="fashion">Fashion<img ng-hide="showFashion" src="img/ring.png"><img ng-show="showFashion" src="img/selected.png"></div>
+
+        </div>
+    </nav>
+        
+
+
+    <div class="empty"><img src="img/empty.png"></div>
+
+    <div ng-show="gender_f" scroll>
+        <div class="page-start" id="Fgenre{{x}}" ng-repeat="x in [1,2,3,4]">
+            <a ng-href="#/card_view/genre{{x}}/female"><img class="background-resize" ng-src="img/female{{x}}.jpg"></a>
+        </div>
+    </div>
+
+    <div ng-show="gender_m" scroll>
+        <div class="page-start" id="Mgenre{{x}}" ng-repeat="x in [1,2,3,4]">
+            <a ng-href="#/card_view/genre{{x}}/male"><img class="background-resize" ng-src="img/male{{x}}.jpg"></a>
+        </div>
+    </div>

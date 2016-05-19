@@ -1,0 +1,60 @@
+
+<nav class="navbar-fixed-top">
+        
+        <div class="headingBar" >
+            <div id="headingTop">
+                <span class="F-left">
+                <a ng-href="#/home"><img class="icon-resize" src="img/left-arrow.png"></a></span>
+                <span class="F-center" >Search</span>
+                <span class="F-right"><img class="icon-resize" src="img/iconEmpty.png" ></a></span>
+            </div>
+             
+        </div>
+</nav>
+<div class="empty"><img src="img/empty.png"></div>
+    
+        
+<div class="searchPage">
+    <div class="searchArea">
+        <span><input ng-model="keywords" type="text" placeholder="Enter keywords here"/></span>
+        <div class="hihi">
+            <div class="dropdown">
+              <button ng-click="myFunction()" class="dropbtn">Type <span class="caret"></span></button>
+              <div id="myDropdown" class="dropdown-content">
+                <a ng-click="getClothing()">Clothing</a>
+                <a ng-click="getAccessories()">Accessories</a>
+                <a ng-click="getShoes()">Shoes</a>
+              </div>
+            </div>
+            <button class="searchBtn" ng-click="search(keywords)">
+                SEARCH </span>
+            </button>
+        </div>
+
+        
+    </div>
+</div>
+
+
+<div id="clothesListView" class="list-view" >
+    <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in clothes">
+        <a class="thumbnail cloth-preview" ng-href="#/detail/{{cloth.id}}">
+            <div class="cover">
+                <div class="table">
+                <div class="table-cell">
+                    <img class="resizeItemImg"  ng-src="{{cloth.image.sizes.Original.url}}"/>
+                    <div class="likedHeart">
+                        <img class="resizeHeartImg"src="img/unlikeHeart.png">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="caption">
+                <span class="panel-title NameHalf">{{cloth.name}}</span>	
+                <span class="panel-title PriceHalf">{{cloth.priceLabel}}</span>                                 
+            </div>
+        </a>                                        
+    </div>                   
+</div>
+ 
+    

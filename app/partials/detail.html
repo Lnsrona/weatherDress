@@ -1,0 +1,57 @@
+<div style="background: white;">
+<nav class="navbar-fixed-top">
+        
+        <div class="headingBar" >
+            <div id="headingTop">
+                <span class="F-left">
+                <a ng-href="#/search"><img class="icon-resize" src="img/left-arrow.png"></a></span>
+                <span class="F-center" >Detail</span>
+                <span class="F-right"><img class="icon-resize" src="img/iconEmpty.png" ></a></span>
+            </div>
+             
+        </div>
+</nav>
+<div class="empty"><img src="img/empty.png"></div>
+
+
+<div class="panel">
+    
+    <div class="panel-body">
+        <div class="cover-img">
+            <div class="table">
+                <div class="table-cell">
+                    <img class="detailImg" ng-src="{{cloth.image.sizes.Original.url}}"/>
+                    <div class="likedHeart">
+                        <span class="like F-right">{{like_amt}} likes&nbsp;</span>
+                        <img class="resizeHeartImg" ng-click="setLike_amt()" src="img/unlikeHeart.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-heading">
+        <h1 class="panel-title bigName">{{cloth.name}}</h1>
+    </div>
+    <table class="table">
+        <tr>
+            <td>
+                
+                <span>
+                <a href="#" style="text-decoration:none"><img class="sign_img2" src="img/facebook.png"></img></a>
+                <a href="#" style="text-decoration:none"><img class="sign_img2" src="img/Pinterest.jpg"></img></a></span>
+                <span class="but_it_btn F-right">{{cloth.priceLabel}}</span>
+                <!--<a href="https://www.pinterest.com/pin/create/button/">
+                    <img class="sign_img2" src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+                </a>-->
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="class_descript" ng-bind-html="cloth_description"></p>
+            </td>
+        </tr>
+    </table>     
+
+</div>
+</div>

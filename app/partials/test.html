@@ -1,0 +1,279 @@
+
+  <div class="ui sidebar">
+    ...
+  </div>
+  <div class="pusher">
+    
+ <style type="text/css">
+	
+	
+	#main_image{position:relative;
+				left:25%;
+				top:40px}
+				
+	#buttonfemale{
+	position:absolute;
+	left:22%;
+	
+	 width:140px;
+	 height:120px;
+	 border:0px;
+	
+	  }
+	
+	
+	#buttonmale{
+	position:absolute;
+	left:51%;
+	
+	 width:140px;
+	 height:120px;
+	 border:0px;
+	
+	  }  
+	
+
+
+
+
+	
+	 #casual{
+	position:absolute;
+	left:22%;
+	
+	 width:150px;
+	 height:75px;
+	 border:1px;
+	
+	  }
+	  
+	#outdoor{
+	position:absolute;
+	left:240%;
+	
+	 width:150px;
+	 height:75px;
+	 border:1px;
+	
+	  }
+	  
+	  
+	#office{
+	position:absolute;
+	left:22%;
+	
+	 width:150px;
+	 height:75px;
+	 border:1px;
+	
+	  }
+	  
+	  
+	 #fashion{
+	position:absolute;
+	left:240%;
+	
+	 width:150px;
+	 height:75px;
+	 border:1px;
+	
+	  } 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	#location{
+	position:absolute;
+	left:18%;
+	 width:450px;
+	 height:75px;
+	 border:2px;
+	 cursor:pointer;
+	  }
+	
+
+	
+	#gender{position:relative;
+					left:4%;}
+	#preferred_intensity{position:relative;
+					left:4%;}
+	#outfits{position:relative;
+					left:4%;}
+	#items{position:relative;
+					left:4%;}		
+	#notification{position:relative;
+					left:4%;}
+	#sharing_setting{position:relative;
+					left:4%;}
+	#about_us{position:relative;
+					left:4%;}
+	#help{position:relative;
+					left:4%;}
+	#feedback{position:relative;
+					left:4%;}
+	
+  
+
+    #setting{position:relative;
+					left:10%;}		
+	#exit{position:relative;
+					left:70%;}	
+	#selection{position:absolute;
+					left:95%;}
+	#words_inline	{
+					position:absolute;
+					left:19%;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	#liked_outfits_num{position:absolute;
+					left:30%;}
+	#liked_outfits{position:absolute;
+					left:22%;}
+	#liked_items_num{position:absolute;
+					left:66%;}
+	#liked_items{position:absolute;
+					left:59%;}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ </style>
+
+ 
+<div bgcolor="AntiqueWhite">
+
+<div id="main_image"><img src="http://d1i6tehnj672py.cloudfront.net/fashion/wp-content/uploads/2013/01/KateUpton-ellefrance06-95x95.jpg" width=50%/></div>
+<!-- <div id="describe_of_main">Nike-True Tour Flat Bill Cap</div>-->
+<br/>
+<h3 align="center">Kate Jones</h3>
+
+
+
+<div>
+
+<span id="liked_outfits_num">19</span><span id="liked_items_num">28</span>
+<br/>
+</div>
+
+<div>
+<span id="liked_outfits">Liked Outfits</span><span id="liked_items">Liked Items</span>
+</div>
+<br/><br/>
+<hr width=900 size=3 color=black align=center noshade>
+
+
+<div>
+<h3 align="center">Location</h3>
+
+<form id="location" name="location" method="post" action="index.html">
+<input type="submit" name="location" id="location" value="New York" />
+</form>
+
+<br/><br/>
+
+
+
+
+
+
+<hr width=600 style="border:1px dashed black; height:1px">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+<h4 align="center">Gender</h4>
+
+<form id="buttonfemale" name="buttonfemale" method="post" action="index.html">
+<input type="submit" name="buttonfemale" id="buttonfemale" value="Female" />
+</form>
+
+<form id="buttonmale" name="buttonmale" method="post" action="index.html">
+<input type="submit" name="buttonmale" id="buttonmale" value="Male" />
+</form>
+
+</div>
+<br/> <br/> <br/> <br/>
+
+
+
+
+<div>
+<h4 align="center">Cloth Genre</h4>
+</div>
+
+<div>
+<form id="casual" name="casual" method="post" action="index.html">
+<input type="submit" name="casual" id="casual" value="Casual" />
+
+
+<form id="outdoor" name="outdoor" method="post" action="index.html">
+<input type="submit" name="outdoor" id="outdoor" value="Outdoor" />
+</form>
+</div>
+
+
+<br/><br/>
+
+<div>
+<form id="office" name="office" method="post" action="index.html">
+<input type="submit" name="office" id="office" value="Office" />
+
+
+<form id="fashion" name="fashion" method="post" action="index.html">
+<input type="submit" name="fashion" id="fashion" value="Fashion" />
+</form>
+
+
+
+</div>
+<br/> <br/> <br/> 
+
+<div> 
+ <img src="https://image.freepik.com/free-icon/settings-circle_318-27931.png" id="setting" height="70">
+ <img src="http://www.myiconfinder.com/uploads/iconsets/256-256-d58cee45141ee91804ce2ec5a86eccc7-exit.png" id="exit" height="70">
+
+</div>
+
+
+
+ 	<script type="text/javascript">
+    (function(doc, win) {
+        var docEl = doc.documentElement;
+        (function() {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) {
+                return;
+            }
+            docEl.style.fontSize = 12 * (clientWidth / 320) + 'px';
+        }());
+    })(document, window);
+</script>
+ </div>
+ 
+  </div>

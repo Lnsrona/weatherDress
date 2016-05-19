@@ -1,0 +1,156 @@
+<!--<nav class="navbar-fixed-top">
+        <div class="statusBat"> </div>
+        <div class="headingBar" >
+            <div id="headingTop">
+                <a href="#/home"><span class="F-left"><img class="icon-resize" src="../img/list.png"></span></a>
+                <span class="F-center" >Name</span>
+                <span class="F-right"><a ng-href="#/search"><img class="icon-resize" src="../img/search.png" ></a></span>
+            </div>
+             
+        </div>
+</nav>-->
+<div class="backdrop" ng-show="sidebar">
+<div class="col-xs-9">
+	<div class="sidebar">
+		<div id="main_image">
+			<img width=50% src="http://d1i6tehnj672py.cloudfront.net/fashion/wp-content/uploads/2013/01/KateUpton-ellefrance06-95x95.jpg"/>
+		</div>
+<!-- <div id="describe_of_main">Nike-True Tour Flat Bill Cap</div>-->
+	<br/>
+	<h2 align="center"><font color="white">Kate Jones</font></h2>
+
+	<div class="liked">
+		<div class="col-xs-6">
+			<p align="center"><font size="8" color="white">19</font></p>
+			<p align="center"><font size="5" color="white">liked outfits</font></p>
+		</div>
+		<div class="col-xs-6">
+			<p align="center"><font size="8" color="white">23</font></p>
+			<p align="center"><font size="5" color="white">liked items</font></p>
+		</div>
+	</div>
+
+	<!--<div>
+	<font color="white"><span id="liked_outfits_num">19</span><span id="liked_items_num" color="white">28</span></font>
+	<br/>
+	</div>-->
+
+<!--<div>
+<span id="liked_outfits">Liked Outfits</span><span id="liked_items">Liked Items</span>
+</div>-->
+<br/>
+<br/>
+<hr width=100%>
+<!--<hr width=900 size=3 color=black align=center noshade>-->
+
+
+<!--<div id="location" align="center">-->
+	<h1 align="center"><font color="white">Location</font></h1>
+	<div class="location"><input class="location_btn" ng-model="location" ng-change="setLocation(location)" value="getLocation()" placeholder="Stockholm"/></div>
+<!--</div>-->
+	<!--<form id="location" name="location" method="post" action="index.html">
+	<input type="submit" name="location" id="location" value="Stockholm" />
+	</form>-->
+
+	<br/>
+
+
+	<hr width=100%>
+	<!--<hr width=600 style="border:1px dashed black; height:1px">-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+	<h1 align="center"><font color="white">Gender</font></h1>
+
+	<!--<form id="buttonfemale" name="buttonfemale" method="post" action="index.html">
+	<input type="submit" name="buttonfemale" id="buttonfemale" value="Female" />
+	</form>
+
+	<form id="buttonmale" name="buttonmale" method="post" action="index.html">
+	<input type="submit" name="buttonmale" id="buttonmale" value="Male" />
+	</form>-->
+	
+	<div class="col-xs-6">
+		<div align="center"><a ng-click="gender_f=true; gender_m=false; setGender(gender)" style="text-decoration:none"><img ng-hide="gender_m" ng-show="gender_f" class="gender_btn" src="../img/femaleAc.png"/><img ng-show="gender_m" ng-hide="gender_f" class="gender_btn" src="../img/femaleUn.png"/></a></div>
+	</div>
+	<div class="col-xs-6">
+		<div align="center"><a ng-click="gender_m=true; gender_f=false; setGender(male)" style="text-decoration:none"><img ng-hide="gender_m" ng-show="gender_f" class="gender_btn" src="../img/maleUn.png"/><img ng-show="gender_m" ng-hide="gender_f" class="gender_btn" src="../img/maleAc.png"/></a></div>
+	</div>
+
+</div>
+<br/> <br/><br/>
+
+
+
+<div class="genre">
+	<h1 align="center"><font color="white">Cloth Genre</font></h1>
+	<div class="col-xs-6">
+		<div align="center"><a href="#/home.html#CasualG" ng-click="setGenre(casual)" style="text-decoration:none"><img ng-hide="genre_c == false" ng-show="genre_c" class="gender_btn" src="../img/casualAc.png"/><img ng-hide="genre_c" ng-show="!genre_c" class="gender_btn" src="../img/casualUn.png"/></a></div>
+		<br/>
+		<div align="center"><a ng-click="setGenre(office)" style="text-decoration:none"><img ng-hide="genre_office == false" ng-show="genre_office" class="gender_btn" src="../img/officeAc.png"/><img ng-hide="genre_office" ng-show="!genre_office" class="gender_btn" src="../img/officeUn.png"/></a></div>
+	</div>
+	<div class="col-xs-6">
+		<div align="center"><a ng-click="setGenre(outdoor)" style="text-decoration:none"><img ng-hide="genre_outdoor == false" ng-show="genre_outdoor" class="gender_btn" src="../img/outdoorAc.png"/><img ng-hide="genre_outdoor" ng-show="!genre_outdoor" class="gender_btn" src="../img/outdoorUn.png"/></a></div>
+		<br/>
+		<div align="center"><a ng-click="setGenre(fashion)" style="text-decoration:none"><img ng-hide="genre_f == false" ng-show="genre_f" class="gender_btn" src="../img/fashionAc.png"/><img ng-hide="genre_f" ng-show="!genre_f" class="gender_btn" src="../img/fashionUn.png"/></a></div>
+	</div>
+</div>
+
+<!--<div>
+<form id="casual" name="casual" method="post" action="index.html">
+<input type="submit" name="casual" id="casual" value="Casual" />
+
+
+<form id="outdoor" name="outdoor" method="post" action="index.html">
+<input type="submit" name="outdoor" id="outdoor" value="Outdoor" />
+</form>
+</div>-->
+
+
+<!--<br/><br/>
+
+<div>
+<form id="office" name="office" method="post" action="index.html">
+<input type="submit" name="office" id="office" value="Office" />
+
+
+<form id="fashion" name="fashion" method="post" action="index.html">
+<input type="submit" name="fashion" id="fashion" value="Fashion" />
+</form>
+
+
+
+</div>-->
+<br/><br/> <br/> 
+<br/> <br/> <br/> 
+
+<div class="set_bottom"> 
+	<div class="row">
+		<button class="set"><img src="https://image.freepik.com/free-icon/settings-circle_318-27931.png" id="setting" height="70"></button>
+		<button class="finder"><img class="finder_btn" src="http://www.myiconfinder.com/uploads/iconsets/256-256-d58cee45141ee91804ce2ec5a86eccc7-exit.png"></button>
+</div>
+</div>
+	
+ </div>
+ </div>
+ <div class="col-xs-3">
+	 <a ng-click="sidebar=false" style="text-decoration:none">
+	 <div class="blank">
+		
+	 </div>
+	 </a>
+ </div>
+ 
+</div> 

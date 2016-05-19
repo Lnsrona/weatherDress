@@ -1,0 +1,3 @@
+weatherDressApp.controller("databaseCtrl", function($scope, $firebaseArray,Weather) {
+    // ...
+});
