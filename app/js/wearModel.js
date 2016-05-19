@@ -13,7 +13,7 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$firebaseA
     var hefengAPI="939ca234771f43f29168f5e5d68257a5";
     var arrayFWeather=[];
     var arrayCWeather=[];
-    var userID = null;
+    var userID = "56677";
     
     var like_amt = 0;
 
@@ -277,6 +277,7 @@ this.setAccount = function(username,password){
         var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(outfit.id);
         obj.set({
             url: outfit.url
+            //url: url
         })                  
      }
      
@@ -289,7 +290,7 @@ this.setAccount = function(username,password){
     
      this.getLike_outfit = function(outfit){
          var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
-         ref.once("value",function(snapshot){
+         ref.on("value",function(snapshot){
              var obj = snapshot.val();
              return obj;
          })
@@ -323,7 +324,7 @@ this.setAccount = function(username,password){
     
      this.getLike_item = function(item){
          var ref = FirebaseRef.child("userbase").child(userID).child("item");
-         ref.once("value",function(snapshot){
+         ref.on("value",function(snapshot){
              var obj = snapshot.val();
              return obj;
          })
