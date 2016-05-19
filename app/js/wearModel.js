@@ -295,6 +295,18 @@ this.setAccount = function(username,password){
          })
      }
      
+     this.checkLike_outfit = function(id){
+         var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
+            ref.child(id).once("value", function(snapshot){
+                if(snapshot.val() != null){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
+     }
+     
      this.setLike_iem = function(item){
         var obj = FirebaseRef.child("userbase").child(userID).child("item").child(item.id);
         obj.set({
@@ -315,6 +327,18 @@ this.setAccount = function(username,password){
              var obj = snapshot.val();
              return obj;
          })
+     }
+     
+     this.checkLike_item = function(id){
+         var ref = FirebaseRef.child("userbase").child(userID).child("item");
+            ref.child(id).once("value", function(snapshot){
+                if(snapshot.val() != null){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            });
      }
     
     return this;
