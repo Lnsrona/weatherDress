@@ -283,7 +283,7 @@ this.checkAccount = function(userid,success,fail){
         //var ref = new Firebase("https://blazing-heat-24.firebaseio.com/weatherDress/A5C1/Female/Array1");
         
         var ref = FirebaseRef.child("weatherDress").child("A"+i+"C"+j).child(gender).child("Array"+num);
-        ref.once("value", function(snapshot) {
+        return ref.once("value", function(snapshot) {
             var obj=snapshot.val();
             //return obj;    
             success(obj);
@@ -330,7 +330,7 @@ this.checkAccount = function(userid,success,fail){
             return;
         }else{
             var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
-          ref.on("value",function(snapshot){
+          return ref.on("value",function(snapshot){
              var obj = snapshot.val();
              console.log("objjjjjjjjjjjjjjjjj");
              console.log(obj);
@@ -343,7 +343,7 @@ this.checkAccount = function(userid,success,fail){
      
      this.checkLike_outfit = function(id,success,fail){
          var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
-            ref.child(id).once("value", function(snapshot){
+            return ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){
                     success(true);
                     //return true;
@@ -371,7 +371,7 @@ this.checkAccount = function(userid,success,fail){
     
      this.getLike_item = function(success){
          var ref = FirebaseRef.child("userbase").child(userID).child("item");
-         ref.on("value",function(snapshot){
+         return ref.on("value",function(snapshot){
              var obj = snapshot.val();
              success(obj);
              //return obj;
@@ -380,7 +380,7 @@ this.checkAccount = function(userid,success,fail){
      
      this.checkLike_item = function(id,success,fail){
          var ref = FirebaseRef.child("userbase").child(userID).child("item");
-            ref.child(id).once("value", function(snapshot){
+            return ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){
                     success(true);
                     //return true;
