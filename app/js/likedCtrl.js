@@ -1,7 +1,7 @@
 // Search controller that we use whenever we have a search inputs
 // and search results
 weatherDressApp.controller('likedCtrl', function ($scope,Weather,auth) {
-// var userID=Weather.getUserID();
+	 var userID=Weather.getUserID();
 //   if(Weather.checkAccount(userID)){
 //   	$scope.likedOutfit=Weather.getLike_outfit();
 //   	console.error($scope.likedOutfit);
