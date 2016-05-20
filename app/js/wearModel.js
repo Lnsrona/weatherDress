@@ -4,7 +4,7 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 
-weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$firebaseArray,$cookieStore,$anchorScroll){
+weatherDressApp.factory('Weather',function ($resource,$cookieStore,$anchorScroll,$firebaseObject,$firebaseArray,$http,auth){
     var location = "Stockholm";
     var country="Sweden"
     var gender="female";
@@ -13,14 +13,18 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$firebaseA
     var hefengAPI="939ca234771f43f29168f5e5d68257a5";
     var arrayFWeather=[];
     var arrayCWeather=[];
-    var userID = "56677";
-    
+    var profile=[];
     var like_amt = 0;
+    var userID="";
+    var _this=this;
 
-    $anchorScroll.yOffset = 44;
-    
-    this.setUserID = function(){
-        
+$anchorScroll.yOffset = 44;
+    this.setProfile=function(pro){
+        profile=pro;
+        userID=profile.clientID;
+    }
+    this.getProfile=function(){
+        return profile
     }
 
    this.setLocation = function(loc){
@@ -46,12 +50,12 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$firebaseA
         return like_amt;
     }
     
-    this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6',offset:0,limit:10});
-    this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid2964-33820658-6'});
+    this.getAllClothes = $resource('//api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6',offset:0,limit:10});
+    this.getCloth = $resource('//api.shopstyle.com/api/v2/products/:id',{pid:'uid2964-33820658-6'});
     
-    this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid2964-33820658-6'});
-    this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid2964-33820658-6'});
-    this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid2964-33820658-6'});
+    this.getClothing = $resource('//api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid2964-33820658-6'});
+    this.getAccessories = $resource('//api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid2964-33820658-6'});
+    this.getShoes = $resource('//api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid2964-33820658-6'});
     // this.getCurrentWeather = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     
     // this.getWeatherImg = function(condition){
@@ -67,10 +71,29 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$firebaseA
     //     }
     //     return url;
     // }
-    
-    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
+    this.getCurrent = function(city){
+        return $http({
+        url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=c3b7bba4b5ac511ec04d73ac4065ea83',
+        crossDomain: true,
+        dataType: 'json'
+    }).then(function SuccessCallback(response){
+        var data = response.data;
+        return data;
+    });
+}
+       
     //this.getForecast = $resource('http://api.openweathermap.org/data/2.5//forecast?',{q:location, cnt:3,appid:'c3b7bba4b5ac511ec04d73ac4065ea83'});
-    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
+    this.getForecast = function(city){
+        return $http({
+        url:'https://api.heweather.com/x3/weather?city='+city+'&key=939ca234771f43f29168f5e5d68257a5',
+        crossDomain: true,
+        dataType: 'json'
+    }).then(function SuccessCallback(response){
+        var data = response.data;
+        return data;
+    });
+}
+
     
     // this.setWeatherData=function(loc){
     //     this.getForecast.get({city:loc},function(data){
@@ -169,77 +192,89 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$firebaseA
 {"id":"901","cond":"Cold","url":"img/icon/901.png"},
 {"id":"999","cond":"Unknown","url":"img/icon/999.png"}
 ] 
-
-
-// code of database
+  
+  // code of database
 
 //  var Firebase = require("firebase");
 var FirebaseRef = new Firebase("https://blazing-heat-24.firebaseio.com/");
 var userbase = FirebaseRef.child("userbase");
 
-this.checkAccount = function(username,password, succuss, fail){
-    return userbase.child(username).once("value", function(snapshot) {
-        if(snapshot.val() != null){
-            var entity = snapshot.val();
-            if (entity.userID.password == password)
-            {
-                succuss(entity.userID);
-            } else
-            {
-                fail("password not match");
-            }
+this.getUserID=function(){
+    return userID;
+}
+// this.checkAccount = function(username){
+//     return userbase.child(username).once("value", function(snapshot) {
+//         if(snapshot.val() != null){
+//             var entity = snapshot.val();
+//             if (entity.userID.password == password)
+//             {
+//                 succuss(entity.userID);
+//             } else
+//             {
+//                 fail("password not match");
+//             }
+//         }
+//         else{
+//             fail("user doesnot exist");
+//         }
+//     });
+// }
+
+this.checkAccount = function(userid,success,fail){
+    var ref = userbase.child(userid);
+
+    return ref.once("value",function(snapshot){
+        if(snapshot.val() == null){
+            console.log("11111111111");
+            //return false;
+            success(true);
         }
         else{
-            fail("user doesnot exist");
+            //return true;
+            fail(false);
         }
-    });
+    })
 }
 
-// this.checkName = function(username){
 
-//     FirebaseRef.child(username).on("value", function(snapshot){
-//         if(snapshot.val() == null){
-//             return true;
-//         }
-//         else 
-//             return false;
-//         });
-// };
 
-this.setAccount = function(username,password){
-    // var boo = _this.checkName(username);
-    // if(boo == false){
-    //     alert("The user name has already exist, please change another one!");
-    //     return;
-    // }
+
+
+//设置数据库
+// this.setAccount = function(username){
+//     // var boo = _this.checkName(username);
+//     // if(boo == false){
+//     //     alert("The user name has already exist, please change another one!");
+//     //     return;
+//     // }
     
-     return userbase.child(username).once("value", function(snapshot){
-        if(snapshot.val() != null){
-            alert("The user name has already exist, please change another one!");
-            return;
-        }
+//      return userbase.child(username).once("value", function(snapshot){
+//         if(snapshot.val() != null){
+//             alert("The user name has already exist, please change another one!");
+//             return;
+//         }
         
-        else{            
-//            var newuser= userbase.child(username);
-             userbase.child(username).child("userID").set ({
-                name: username,
-                password: password
-            });  
-            alert("Your account has been created, please log in."); 
-        }
+//         else{            
+// //            var newuser= userbase.child(username);
+//              userbase.child(username).child("userID").set ({
+//                 name: username,
+//                 password: password
+//             });  
+//             alert("Your account has been created, please log in."); 
+//         }
         
-    });
+//     });
 
-    // if(username==null || password == null){
-    //     alert("input error!");
-    //     return;
-    // }
+//     // if(username==null || password == null){
+//     //     alert("input error!");
+//     //     return;
+//     // }
        
-}
+// }
 
 // cloth library
 
-    this.getWeatherCloth = function(temp,code,gender,num){      
+    this.getWeatherCloth = function(temp,code,gender,num,success){      
         var i;
         var j;
         i =  5 + parseInt(temp / 10) * 10;
@@ -250,7 +285,8 @@ this.setAccount = function(username,password){
         var ref = FirebaseRef.child("weatherDress").child("A"+i+"C"+j).child(gender).child("Array"+num);
         ref.once("value", function(snapshot) {
             var obj=snapshot.val();
-            return obj;    
+            //return obj;    
+            success(obj);
         });
         //var array = ref.child(gender);
         // var lib = FirebaseRef.child("clothbase").child(count);
@@ -273,74 +309,88 @@ this.setAccount = function(username,password){
     }
     
     
-    this.setLike_outfit = function(outfit){
-        var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(outfit.id);
+    this.setLike_outfit = function(id,url){
+        var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(id);
         obj.set({
-            url: outfit.url
+            url: url
             //url: url
         })                  
      }
      
-     this.del_outfit = function(outfit){
-         var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(outfit.id);
+     this.del_outfit = function(id){
+         var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(id);
          obj.set({
              url: null
          })   
      }
     
-     this.getLike_outfit = function(outfit){
-         var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
-         ref.on("value",function(snapshot){
+     this.getLike_outfit = function(success){
+        console.log(userID);
+        if(userID==""){
+            return;
+        }else{
+            var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
+          ref.on("value",function(snapshot){
              var obj = snapshot.val();
-             return obj;
+             console.log("objjjjjjjjjjjjjjjjj");
+             console.log(obj);
+             success(obj);
          })
+        }
+
+         
      }
      
-     this.checkLike_outfit = function(id){
+     this.checkLike_outfit = function(id,success,fail){
          var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
             ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){
-                    return true;
+                    success(true);
+                    //return true;
                 }
                 else{
-                    return false;
+                    fail(false);
+                    //return false;
                 }
             });
      }
      
-     this.setLike_iem = function(item){
-        var obj = FirebaseRef.child("userbase").child(userID).child("item").child(item.id);
+     this.setLike_item = function(id,url){
+        var obj = FirebaseRef.child("userbase").child(userID).child("item").child(id);
         obj.set({
-            url: item.url
+            url: url
         })                  
      }
      
-     this.del_item = function(item){
-         var obj = FirebaseRef.child("userbase").child(userID).child("item").child(item.id);
+     this.del_item = function(id){
+         var obj = FirebaseRef.child("userbase").child(userID).child("item").child(id);
          obj.set({
              url: null
          })   
      }
     
-     this.getLike_item = function(item){
+     this.getLike_item = function(success){
          var ref = FirebaseRef.child("userbase").child(userID).child("item");
          ref.on("value",function(snapshot){
              var obj = snapshot.val();
-             return obj;
+             success(obj);
+             //return obj;
          })
      }
      
-     this.checkLike_item = function(id){
+     this.checkLike_item = function(id,success,fail){
          var ref = FirebaseRef.child("userbase").child(userID).child("item");
             ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){
-                    return true;
+                    success(true);
+                    //return true;
                 }
                 else{
-                    return false;
+                    fail(false);
+                    //return false;
                 }
             });
-     }
+     }  
     
     return this;
 
