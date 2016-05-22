@@ -51,5 +51,14 @@ weatherDressApp.controller( 'loginCtrl', function ( $scope, auth, $firebaseArray
   // var outfit="244";
   // var url="http://stackoverflow.com/questions/4539253/what-is-console-log";
   // Weather.del_outfit(outfit,url);
-  
-});
+  Weather.getLike_outfit(function(data){
+        $scope.outfit=data;
+        $scope.$apply(); // notice the anular data has changed
+        console.log($scope.outfit)
+        }, function(eror){
+			alert("please try again!");
+		});
+    
+     
+  });
+ 

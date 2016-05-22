@@ -20,6 +20,48 @@
   </div>
 </div>-->
 
-<div>
+<!--<div>
     <button ng-click="getCloth()">test</button>
+</div>-->
+
+<!--<nav class="navbar-fixed-top">
+        
+        <div class="headingBar" >
+            <div id="headingTop">
+                <span class="F-left">
+                <a ng-href="#/home"><img class="icon-resize" src="img/left-arrow.png"></a></span>
+                <span class="F-center" >Liked Items</span>
+                <span class="F-right"><img class="icon-resize" src="img/iconEmpty.png" ></a></span>
+            </div>
+             
+        </div>
+</nav>
+<div class="empty"><img src="img/empty.png"></div>
+<div id="clothesListView" class="list-view" >
+    <h4 class="T-center statusBar">{{status}}</h4>
+    <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="value in likedItem">{{item}}
+        <a class="thumbnail cloth-preview" ng-href="#/detail/{{value.id}}">
+            <div class="cover">
+                <div class="table">
+                <div class="table-cell">
+                    <img class="resizeItemImg"  ng-src="{{value.url}}"/>
+                    <div class="likedHeart">
+                        <img class="resizeHeartImg" ng-hide="likedInfo" src="img/unlikeHeart.png">
+                        
+                    </div>
+                </div>
+                </div>
+            </div>-->
+            <!-- <div class="caption">
+                <span class="panel-title NameHalf">{{cloth.name}}</span>    
+                <span class="panel-title PriceHalf">{{cloth.priceLabel}}</span>                                 
+            </div> -->
+
+        <!--</a>                                        
+    </div>                   
+</div>-->
+<div>
+<!--<img ng-src="./img/male5.jpg"></img>-->
+<p>{{outfit.url}}</p>
+<img ng-src="{{outfit.url}}"></img>
 </div>
